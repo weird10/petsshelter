@@ -17,7 +17,7 @@ const PetList = () => {
     } , [] )
 
     const strAscending = [...pets].sort((a, b) =>
-    a.name > b.name ? 1 : -1,
+    a.type > b.type ? 1 : -1,
   );
   console.log(strAscending);
 
