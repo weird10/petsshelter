@@ -34,7 +34,7 @@ const updatePet = (req,res) => {
     })
 };
 const adoptPet = (req,res) => {
-    Pet.adoptOne({_id:req.params.id})
+    Pet.deleteOne({_id:req.params.id})
     .then((result) => {
         res.json(result)
     }).catch((err) => {

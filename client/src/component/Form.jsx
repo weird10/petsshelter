@@ -8,6 +8,9 @@ const Form = () => {
     const [name, setName] = useState("")
     const [type, setType] = useState("")
     const [description, setDescription] = useState("")
+    const [skill1, setSkill1] = useState("")
+    const [skill2, setSkill2] = useState("")
+    const [skill3, setSkill3] = useState("")
     
     const [errors, setErrors] = useState({})
 
@@ -18,7 +21,10 @@ const Form = () => {
         axios.post('http://localhost:8000/api/addPet', {
             name,
             type,
-            description
+            description,
+            skill1,
+            skill2,
+            skill3,
         }).then((res)=> {
             console.log("WHATTTTT", res)
             navigate('/allPets')
@@ -31,6 +37,7 @@ const Form = () => {
 
   return (
     <div>
+        <h2>Know a pet that needs a home?</h2>
         <form onSubmit={submitHandler} className='basicForm'>
             <label className='formTitle'>Name:
                 <input type="text" value={name} onChange={e => setName(e.target.value)}></input>
@@ -44,6 +51,12 @@ const Form = () => {
                 <input type="text" value={description} onChange={e => setDescription(e.target.value)}></input>
             </label>
             { errors.type ?    <span className='danger'>{errors.description.message}</span> : null}
+            <label className='formTitle'>Skills (Optional):
+                <input type="text" value={skill1} onChange={e => setSkill1(e.target.value)}></input>
+                <input type="text" value={skill2} onChange={e => setSkill2(e.target.value)}></input>
+                <input type="text" value={skill3} onChange={e => setSkill3(e.target.value)}></input>
+            </label>
+    
             <button type='submit'>Submit Pet</button>
         </form>
     </div>

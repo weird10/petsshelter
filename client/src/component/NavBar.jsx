@@ -14,13 +14,19 @@ const NavBar = () => {
   
   return (
     <div className='titlebar'>
-        <h1>Pet Shelter</h1>
+        <div className='titleBarLeft'>
+          <h1>Pet Shelter</h1>
+          <h2>These pets are looking for a good home</h2>
+        </div>
+        <div className='titleBarRight'>
         <NavLink className="navLinks" to="/allPets" style={({isActive}) => 
           isActive ? activeStyle: undefined 
           } end>Home</NavLink>
         <NavLink className="navLinks" to="/form" style={({isActive}) => 
           isActive ? activeStyle: undefined 
-          } end>Form</NavLink>
+          } end>Add a pet to the shelter!</NavLink>
+        </div>
+        
 
     </div>
   )

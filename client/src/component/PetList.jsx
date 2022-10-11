@@ -22,20 +22,28 @@ const PetList = () => {
   console.log(strAscending);
 
 return (
-    <div>
-        <h1>Pet List</h1>
+    <div className="App">
+        <table className='basicTable'>
+            <tr>
+                <th>Name: </th>
+                <th>Type: </th>
+                <th>Actions:</th>
+        
+            </tr>
+            
         {
             strAscending.map((pet, index) => (
-                <div className="boxed" key={pet._id}>
-                    <div className='petText'>
-                        <h3>Name: {pet.name}</h3>
-                        <p>Type: {pet.type}</p>
-                        <p>Description: {pet.description}</p>
-                        <Link to={`/onepet/${pet._id}`}>{pet.name}'s Page</Link>
-                    </div>
-                </div>
+                <tr key={pet._id}>
+                    
+                        <td>{pet.name}</td>
+                        <td>{pet.type}</td>
+                        <td><Link className="falseButton" to={`/onepet/${pet._id}`}>{pet.name}'s Page</Link><span><Link className="button likey" to={`/editpet/${pet._id}`}> Update</Link></span></td>
+                       
+                        
+                </tr>
             ))
         }
+         </table>
     </div>
 )
 }

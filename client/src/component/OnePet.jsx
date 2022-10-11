@@ -21,7 +21,7 @@ const OnePet = () => {
     })
 
     const adoptHandler = () => {
-        axios.adopt(`http://localhost:8000/api/adoptPet/${id}`)
+        axios.delete(`http://localhost:8000/api/adoptPet/${id}`)
         .then((res) => {    
             console.log("Adopted by someone")
             navigate('/allPets')
@@ -35,6 +35,7 @@ const OnePet = () => {
 
     const handleClick = event => {
         event.currentTarget.disabled = true;
+        likeMe()
         console.log('button clicked');
     }
 
@@ -44,7 +45,21 @@ const OnePet = () => {
             <h2>{pet.name}'s Page</h2>
             <h3>Type: {pet.type}</h3>
             <h3>Description: {pet.description}</h3>
-            <Link className="button likey" to={`/editpet/${id}`}> Update</Link>
+            <table className='smallTable'>
+                <tbody>
+                    <tr>
+                    <td><h3 className='hype'>Skills:</h3></td>
+                    <td>
+                        <ul>
+                            <li>{pet.skill1}</li>
+                            <li>{pet.skill2}</li>
+                            <li>{pet.skill3}</li>
+                        </ul>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+                <p>{likes} Like!!!</p>
             <button className="warning" onClick={(e) => adoptHandler(pet._id)}>Adopt me please!</button>
             <button className="likey" onClick={handleClick}>Give me LIKESSS!</button>        
         </div>
